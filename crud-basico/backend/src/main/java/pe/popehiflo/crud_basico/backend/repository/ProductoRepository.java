@@ -19,5 +19,8 @@ import pe.popehiflo.crud_basico.backend.entity.Producto;
 public interface ProductoRepository extends JpaRepository<Producto, Integer> {
 
 	Optional<Producto> findByProducto(String producto);
+	Optional<Producto> findByCodigo(String codigo);
 	boolean existsByProducto(String producto);
+	boolean existsByCodigo(String codigo);
+	
 }

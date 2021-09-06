@@ -49,6 +49,11 @@ public class ProductoService {
 		return res;
 	}
 	
+	public Optional<Producto> getByCodigo(String codigo) {
+		Optional<Producto> res = productoRepository.findByCodigo(codigo);
+		return res;
+	}
+	
 	public void save(Producto producto) {
 		productoRepository.save(producto);
 	}
@@ -63,6 +68,10 @@ public class ProductoService {
 	
 	public boolean existsByProducto(String producto) {
 		return productoRepository.existsByProducto(producto);
+	}
+	
+	public boolean existsByCodigo(String codigo) {
+		return productoRepository.existsByCodigo(codigo);
 	}
 	
 	
