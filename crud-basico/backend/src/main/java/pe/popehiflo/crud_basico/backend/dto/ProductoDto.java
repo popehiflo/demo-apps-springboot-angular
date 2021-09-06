@@ -35,4 +35,42 @@ public class ProductoDto {
 		this.precio = precio;
 	}
 	
+	
+	/**
+	 * @return the producto
+	 */
+	public String getProducto() {
+		return producto;
+	}
+	/**
+	 * @param producto the producto to set
+	 */
+	public void setProducto(String producto) {
+		this.producto = producto;
+	}
+	/**
+	 * @return the codigo
+	 */
+	public String getCodigo() {
+		return codigo;
+	}
+	/**
+	 * @param codigo the codigo to set
+	 */
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
+	/**
+	 * @return the precio
+	 */
+	public float getPrecio() {
+		return precio;
+	}
+	/**
+	 * @param precio the precio to set
+	 */
+	public void setPrecio(float precio) {
+		this.precio = precio;
+	}
+	
 }
