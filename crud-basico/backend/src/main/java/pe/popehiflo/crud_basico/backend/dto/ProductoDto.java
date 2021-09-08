@@ -18,24 +18,25 @@ public class ProductoDto {
 	
 	private String codigo;
 	@Min(0)
-	private float precio;
+	private Float precio;
 	
 	public ProductoDto() {
 		
 	}
+	
 	/**
 	 * @param producto
 	 * @param codigo
 	 * @param precio
 	 */
-	public ProductoDto(String producto, String codigo, float precio) {
+	public ProductoDto(@NotBlank String producto, String codigo, @Min(0) Float precio) {
 		super();
 		this.producto = producto;
 		this.codigo = codigo;
 		this.precio = precio;
 	}
-	
-	
+
+
 	/**
 	 * @return the producto
 	 */
@@ -63,13 +64,13 @@ public class ProductoDto {
 	/**
 	 * @return the precio
 	 */
-	public float getPrecio() {
+	public Float getPrecio() {
 		return precio;
 	}
 	/**
 	 * @param precio the precio to set
 	 */
-	public void setPrecio(float precio) {
+	public void setPrecio(Float precio) {
 		this.precio = precio;
 	}
 	

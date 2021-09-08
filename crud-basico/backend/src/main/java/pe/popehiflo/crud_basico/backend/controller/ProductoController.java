@@ -65,7 +65,7 @@ public class ProductoController {
 	public ResponseEntity<?> create(@RequestBody ProductoDto productoDto) {
 		if(StringUtils.isBlank(productoDto.getProducto()))
 			return new ResponseEntity(new Mensaje("el nombre es obligatorio"), HttpStatus.BAD_REQUEST);
-		if(productoDto.getPrecio() < 0)
+		if(productoDto.getPrecio() < 0 || productoDto.getPrecio()==null)
 			return new ResponseEntity(new Mensaje("el precio debe ser mayor que 0"), HttpStatus.BAD_REQUEST);
 		if(productoService.existsByProducto(productoDto.getProducto()))
 			return new ResponseEntity(new Mensaje("el nombre ya existe"), HttpStatus.BAD_REQUEST);
@@ -88,7 +88,7 @@ public class ProductoController {
 		if(StringUtils.isBlank(productoDto.getProducto()))
 			return new ResponseEntity(new Mensaje("el nombre es obligatorio"), HttpStatus.BAD_REQUEST);
 		
-		if(productoService.existsByCodigo(productoDto.getCodigo()) && productoService.getByCodigo(productoDto.getProducto()).get().getId() != id)
+		if(productoService.existsByCodigo(productoDto.getCodigo()) && productoService.getByCodigo(productoDto.getCodigo()).get().getId() != id)
 			return new ResponseEntity(new Mensaje("el codigo/sku ya existe"), HttpStatus.BAD_REQUEST);
 		
 		if(productoDto.getPrecio() < 0)
