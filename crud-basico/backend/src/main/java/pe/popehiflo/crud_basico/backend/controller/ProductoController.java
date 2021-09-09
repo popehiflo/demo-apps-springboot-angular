@@ -64,11 +64,11 @@ public class ProductoController {
 	@PostMapping("/create")
 	public ResponseEntity<?> create(@RequestBody ProductoDto productoDto) {
 		if(StringUtils.isBlank(productoDto.getProducto()))
-			return new ResponseEntity(new Mensaje("el nombre es obligatorio"), HttpStatus.BAD_REQUEST);
+			return new ResponseEntity(new Mensaje("el nombre de producto es obligatorio"), HttpStatus.BAD_REQUEST);
 		if(productoDto.getPrecio() < 0 || productoDto.getPrecio()==null)
 			return new ResponseEntity(new Mensaje("el precio debe ser mayor que 0"), HttpStatus.BAD_REQUEST);
 		if(productoService.existsByProducto(productoDto.getProducto()))
-			return new ResponseEntity(new Mensaje("el nombre ya existe"), HttpStatus.BAD_REQUEST);
+			return new ResponseEntity(new Mensaje("el nombre de producto ya existe"), HttpStatus.BAD_REQUEST);
 		if(productoService.existsByCodigo(productoDto.getCodigo()))
 			return new ResponseEntity(new Mensaje("el codigo/sku ya existe"), HttpStatus.BAD_REQUEST);
 		Producto producto = new Producto(productoDto.getProducto(), productoDto.getCodigo(), productoDto.getPrecio());
@@ -83,10 +83,10 @@ public class ProductoController {
 			return new ResponseEntity(new Mensaje("no existe"), HttpStatus.NOT_FOUND);
 		
 		if(productoService.existsByProducto(productoDto.getProducto()) && productoService.getByProducto(productoDto.getProducto()).get().getId() != id)
-			return new ResponseEntity(new Mensaje("ese producto ya existe"), HttpStatus.BAD_REQUEST);
+			return new ResponseEntity(new Mensaje("ese nombre de producto ya existe"), HttpStatus.BAD_REQUEST);
 		
 		if(StringUtils.isBlank(productoDto.getProducto()))
-			return new ResponseEntity(new Mensaje("el nombre es obligatorio"), HttpStatus.BAD_REQUEST);
+			return new ResponseEntity(new Mensaje("el nombre de producto es obligatorio"), HttpStatus.BAD_REQUEST);
 		
 		if(productoService.existsByCodigo(productoDto.getCodigo()) && productoService.getByCodigo(productoDto.getCodigo()).get().getId() != id)
 			return new ResponseEntity(new Mensaje("el codigo/sku ya existe"), HttpStatus.BAD_REQUEST);
